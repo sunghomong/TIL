@@ -1,0 +1,18 @@
+
+- git을 생성 및 
+git init = git 생성
+git branch = git branch들 조회(local)
+git checkout<브렌치 이름> = 브렌치 전환
+git push <원격 저장소 이름> -d <원격 브랜치 이름> = 원격 저장소(origin)의 브렌치 삭제
+git branch -a = 모든 브랜치 조회
+cd : 경로 이동
+mkdir : 폴더 생성
+ls -al = 현재 경로에 있는 모든 정보 조회
+git init = 깃 생성
+open .git = 깃 폴더 열기
+rm -rf .git = 깃 폴더 삭제
+git status = 깃 상태를 볼수 있는
+git config --global alias.st status = status를 st로 간단하게 변경
+git config -h = 명령어들 간단하게 확인
+
+echo hello world! > a.txt = 텍스트 안에 내용을 만들고 저장

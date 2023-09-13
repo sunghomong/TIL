@@ -1,0 +1,1 @@
+window -> preferences -> General -> web Browser -> Use external web browser -> chrome 추가 체크

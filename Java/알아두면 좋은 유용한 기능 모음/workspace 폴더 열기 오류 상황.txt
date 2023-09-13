@@ -1,0 +1,17 @@
+1. 이클립스 workspace 폴더에 열려고 하는 프로젝트를 폴더째로 복사.
+ex) sample 프로젝트 복사.
+2. File - import
+General - Existing Projects into Workspace (workspace 안에 있는 프로젝트를 열때 쓰는 방법)
+3. Select root directory 를 선택
+Browse.. 클릭
+sample 프로젝트 선택
+4. Finish
+
+-
+The import XXX cannot be resolved 에러
+* 원인 
+- path 를 잘못 잡았기 때문
+* 해결방안
+- 필요한 jar 파일을 해당 프로젝트에 적용
+- Right click on project - BuildPath - Configure BuildPath - Libraries tab - Double click on JRE SYSTEM LIBRARY - Then select JRE
+
