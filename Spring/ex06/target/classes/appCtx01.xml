@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 대상객체(핵심)를 빈으로 등록 -->
+	<bean id="impeCalc" class="spring.calc.ImpeCalculator" />
+
+	<bean id="recCalc" class="spring.calc.RecCalculator" />
+
+	<!-- 프록시객체(부가)로 빈으로 등록 -->
+	<bean id="exeTimeAspect1" class="spring.aspect.ExeTimeAspect1"/>
+
+	<!-- AOP 설정 -->
+	<aop:config>
+		<aop:aspect id="measureAspect" ref="exeTimeAspect1">	<!-- 하나의 공통 기능 -->
+			<!-- 1. 공통 기능을 적용할 대상(핵심기능)이 무엇인가? -->
+			<aop:pointcut 
+				expression="execution(public * spring.calc..*(..))" 
+				id="factorialMethod"/>
+			
+			<!-- 2. 공통 기능을 언제 적용할 것인가? -->
+			<aop:around      method="measure"   pointcut-ref="factorialMethod"/>
+		<!--     언제[전후로]  공통기능을 메서드이름        대상이 되는 핵심 메서드가 뭐냐?   -->
+		</aop:aspect>
+<!-- 		
+		<aop:aspect></aop:aspect>   여러 공통 기능 
+		<aop:aspect></aop:aspect>
+-->
+	
+	</aop:config>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</beans>

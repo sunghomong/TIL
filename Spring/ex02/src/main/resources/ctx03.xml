@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!--  생성자를 통한 주입 -->
+<!-- 	
+	<bean id="versionPrinter" class="spring.printer.VersionPrinter">
+		<constructor-arg value="1"/>
+		<constructor-arg value="2"/>   버전 1.2
+	</bean>
+-->
+
+	<!-- setter 메서드를 통한 주입 -->
+	<bean id="versionPrinter" class="spring.printer.VersionPrinter">
+		<property name="majorVersion" value="1"/>
+		<property name="minorVersion">  <!--  버전 1.2 -->
+			<value>2</value>
+		</property>
+	</bean>
+
+</beans>
