@@ -1,0 +1,6 @@
+jdbcTemplate을 이용한다!
+=> 연결 객체 -> 커넥션풀 : c3p0, HikariCP...
+
+DML
+ - DB에서 데이터 가져오기 (select)
+  => 가져온 데이터를 'Java데이터로 옮겨담기' (Mapping)
