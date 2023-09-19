@@ -2,3 +2,6 @@ https://jjikin.com/posts/Jekyll-Chirpy-%ED%85%8C%EB%A7%88%EB%A5%BC-%ED%99%9C%EC%
 
 jekyll Chirpy 테마를 활용한 블로그 만들기
 
+https://www.irgroup.org/categories/chirpy/
+
+chirpy에 대한 블로그 포스팅 정보

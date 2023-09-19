@@ -1,0 +1,15 @@
+스프링 프로젝트 => legacy 프로젝트
+	=> POM.xml에 필요한 라이브러리를 직접 작성
+
+스프링 스타터 프로젝트 => 스프링 부트
+	=> 필요한 라이브러리를 목록에서 선택
+	start.spring.io
+
+1) web.xml
+	스프링 서블릿
+2) 스프링 설정파일
+	spring-mvc.xml, spring-controller.xml
+3) 컨트롤러 객체
+	HomeController
+4) 화면에 보여줄 뷰
+	webapp/WEB-INF/views/hello.jsp
