@@ -1,0 +1,25 @@
+현재 원격 저장소 연결 상태 확인하기
+- git remote -v 
+
+1. 원격 저장소가 이미 연결이 되어 있는 상태일 때
+
+이런 경우에는 기존의 저장소를 지워주고 다시 연결시켜줘야 한다. 왜인지는 모르겠으니 인식을 못하는 거 같으니 지워주고 다시 연결을 해주자.
+
+- # git remote rm [원격 저장소 명]
+# git remote remove [원격 저장소 명]
+git remote rm origin
+
+- 그리고 다시 저장소를 연결해 주자.
+
+# git remote add [저장소 명] [원격 저장소 위치]
+ git remote add origin git@github.com....
+
+
+2. 원격 저장소가 연결되어 있지 않을 때
+이때는 이미 연결된 게 소실됐거나 처음부터 안되어 있을 수도 있으니 새롭게 연결해 주면 된다.
+
+# git remote add [저장소 명] [원격 저장소 위치]
+ git remote add origin git@github.com....
+이런 식으로 연결 후 git push origin 같은 명령어를 입력하면 정상적으로 작동하는 것을 볼 수 있다.
+
+git remote add 명령어를 통해 연결 후 git remote -v 명령어로 확인해 주는 거 잊지 말자.

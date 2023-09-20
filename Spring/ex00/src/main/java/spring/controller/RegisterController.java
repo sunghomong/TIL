@@ -2,7 +2,9 @@ package spring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,12 +50,14 @@ public class RegisterController { // 회원 가입 기능
 	
 	// 2. @RequestParam 어노테이션을 이용한 방식
 	@PostMapping("/step2") // = (value = "register/step2", method = RequestMethod.POST) 단, get,post 둘다 사용할때는 위의 방식을 사용
-	public String handlerStep2(@RequestParam(value = "agree", required = false, defaultValue = "false") Boolean agree) { // 장점 : 자동 형 변환 가능
+	public String handlerStep2(@RequestParam(value = "agree", required = false, defaultValue = "false") Boolean agree,Model model) { // 장점 : 자동 형 변환 가능
 		// (required = false, defaultValue = "false") = 필수 요소는 아니지만 입력값이 없을경우 false를 쓰겠습니다.
 		
 		if(!agree) {
 			return "register/step1";
 		}
+		// 스프링 커스텀 폼 태그에 에러를 없애기 위해 빈 커맨드객체를 넣어주어야 한다.
+		model.addAttribute("formData", new RegisterRequest());
 		
 		return "register/step2";
 	}
@@ -123,8 +127,8 @@ public class RegisterController { // 회원 가입 기능
 //	}
 	
 	
-	@PostMapping("/step3")	// => 커맨드 객체
-	public String handlerStep3(RegisterRequest regReq) {
+	@PostMapping("/step3")	// => 커맨드 객체   => 외부에서 사용할 이름[request.setAttribute("formData",~~~)]
+	public String handlerStep3(@ModelAttribute("formData") RegisterRequest regReq) {
 		// 여러 데이터를 한꺼번에 전달 받는 방식
 		// 전제조건 : 폼에서 사용한 이름과 객체의 필드명이 일치하는 경우
 		//		=> 폼에서 사용한 이름과 set메서드의 필드명이 일치하는 경우

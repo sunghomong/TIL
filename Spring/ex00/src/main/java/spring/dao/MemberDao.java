@@ -12,9 +12,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import spring.vo.Member;
 
+@Repository
 public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받기 위한 클래스
 
 	private JdbcTemplate jdbcTemplate;
@@ -22,6 +24,7 @@ public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받
 //	public MemberDao(DataSource dataSource) {
 //		this.jdbcTemplate = new JdbcTemplate(dataSource);
 //	}
+	
 	public MemberDao(JdbcTemplate jdbcTemplate) {
 		this.jdbcTemplate = jdbcTemplate;
 	}

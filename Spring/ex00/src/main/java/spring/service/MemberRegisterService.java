@@ -3,12 +3,14 @@ package spring.service;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import spring.dao.MemberDao;
 import spring.exception.AlreadyExistingMemberException;
 import spring.vo.Member;
 import spring.vo.RegisterRequest;
 
+@Service
 public class MemberRegisterService { // 회원 가입 기능
 	
 	private MemberDao dao; // = new MemberDao();

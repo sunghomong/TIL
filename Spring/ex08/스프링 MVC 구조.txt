@@ -1,0 +1,48 @@
+스프링 MVC : 웹개발
+
+클 ---- [요청] -----> 서버
+클 <----[응답]----- 서버
+
+------------------------------------------------
+ [->]  http://localhost:8085/ex00/
+ [<-]  MainController -> main.jsp
+             => <mvc:view-controller path = "" view-name ="main"/>
+ {회원 가입}
+   [->] 버튼 -> /register/step1
+   [<-] RegisterController  -> handlerStep1()    -> register/step1.jsp
+   [->] 약관동의 버튼 -> /register/step2{POST}
+   [<-] RegisterController -> {P} handlerStep2()
+          1. 동의 체크 X -> register/step1.jsp
+          2. 동의 체크 O -> register/step2.jsp
+   [->] 회원정보 가입버튼 -> /register/step3 {POST}
+   [<-] RegisterController -> {P} handlerStep3(RegisterRequest)
+		1. 가입실패 -> register/step3.jsp
+		2. 가입성공 -> register/step3.jsp
+-------------------------------------------------------------------------------------
+커맨드객체의 응용 (중첩,컬렉션)
+   => 설문조사  spring.survey
+
+http://localhost:8085/ex00/survey
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------
+@Getter @Setter 사용 하기
+사용 전에 프로젝트안에 세팅을 해줘야한다.
+이를 위해서 Maven Repository 사이트에서 lombok의 Maven 코드 복사후 dependency에 기능 추가 해주고 추가를 했다면 업데이트 후에 Maven Dependences에서 lombok 추가되었는지 확인후 그 경로로 이동한 후 cmd 명령창 이후에 고추 그림의 실행창이 뜨는데 STS 경로로 이동해 exe파일을 선택해 준다. 그리구 나서 잘 실행되는지 확인 
+
+
+

@@ -8,7 +8,27 @@
 	<context:annotation-config />
 
 
-	<bean id="registerController" class="spring.controller.RegisterController"></bean>
+	<!-- <bean id="registerController" class="spring.controller.RegisterController"></bean> -->
 	
-	<bean id="mainController" class="spring.controller.MainController"></bean>
+	<!-- <bean id="mainController" class="spring.controller.MainController"></bean> -->
+	
+	<!-- <bean id="surveyController" class="spring.controller.SurveyController"></bean> -->
+	
+	<!-- 지정된 패키지에 필요한 모든 클래스를 빈으로 읽어들이는 기능 -->
+	<context:component-scan base-package="spring"/>
+	<!-- 
+		주의점 : 모든 클래스를 빈으로 읽는 것이 아니다!!
+				지정된 클래스들만 빈으로 읽어들인다.
+				빈으로 등록한 클래스인지 판별하기 위한 키워드 : 어노테이션
+				
+				@Bean   <= 가장 일반적인 빈
+				public class Test1{} 
+				
+				빈의 역할에 따라서 
+				@Controller, @RestController
+				@Service
+				@Repository (DAO)
+	-->
+	
+	
 </beans>
