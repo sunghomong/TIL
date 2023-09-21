@@ -3,6 +3,7 @@ package spring.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.exception.AlreadyExistingMemberException;
 import spring.service.MemberRegisterService;
+import spring.validator.RegisterRequestValidator;
 import spring.vo.RegisterRequest;
 
 @Controller
@@ -128,11 +130,20 @@ public class RegisterController { // 회원 가입 기능
 	
 	
 	@PostMapping("/step3")	// => 커맨드 객체   => 외부에서 사용할 이름[request.setAttribute("formData",~~~)]
-	public String handlerStep3(@ModelAttribute("formData") RegisterRequest regReq) {
+	public String handlerStep3(@ModelAttribute("formData") RegisterRequest regReq,Errors error) {
 		// 여러 데이터를 한꺼번에 전달 받는 방식
 		// 전제조건 : 폼에서 사용한 이름과 객체의 필드명이 일치하는 경우
 		//		=> 폼에서 사용한 이름과 set메서드의 필드명이 일치하는 경우
-	
+		
+//		RegisterRequest객체를 검증 -> 에러
+		new RegisterRequestValidator().validate(regReq, error);
+		
+		// 에러 발생 여부는 에러 객체를 통해서 확인
+		if(error.hasErrors()) {
+			// hasErrors메서드가 true라면 에러가 있었다!
+			return "register/step2";
+		}
+		
 		
 		try {
 			
@@ -144,6 +155,7 @@ public class RegisterController { // 회원 가입 기능
 			
 			return "register/step3";
 		} catch (AlreadyExistingMemberException e) {
+			error.rejectValue("email", "duplicate"); // 이메일 중복 에러
 			return "register/step2";
 		}
 	}

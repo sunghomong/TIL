@@ -21,6 +21,7 @@ public class ChangePasswordService { // 비밀번호 변경 기능
 
 	@Transactional
 	public void changePassword(String email, String oldPassword, String newPassword) {
+				// 논리적인 작업
 		
 		Member member = dao.selectByEmail(email);
 		

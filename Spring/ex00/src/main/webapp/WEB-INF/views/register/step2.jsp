@@ -42,7 +42,7 @@
 			<label>
 				<spring:message code="email"/> : <br>
 				<form:input path="email"/>
-				<form:errors path="email"/> 
+				<form:errors path="email" element="div" delimiter="br" /> 
 				<!-- 에러가 없다면 출력하지 않음 / 에러코드가 있다면 에러 코드에 해당하는 라벨을 출력 -->
 			</label>
 		</p>
@@ -50,18 +50,21 @@
 			<label>
 				<spring:message code="name"/> : <br>
 				<form:input path="name"/>
+				<form:errors path="name"/> 
 			</label>
 		</p>
 		<p>
 			<label>
 				<spring:message code="password"/> : <br>
 				<form:password path="password"/>
+				<form:errors path="password"/> 
 			</label>
 		</p>
 		<p>
 			<label>
 				<spring:message code="password.confirm"/> : <br>
 				<form:password path="confirmPassword"/>
+				<form:errors path="confirmPassword"/> 
 			</label>
 		</p>
 		<button type="submit"> <spring:message code="register.btn"/> </button>

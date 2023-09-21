@@ -15,7 +15,8 @@
 	<!-- <bean id="surveyController" class="spring.controller.SurveyController"></bean> -->
 	
 	<!-- 지정된 패키지에 필요한 모든 클래스를 빈으로 읽어들이는 기능 -->
-	<context:component-scan base-package="spring"/>
+	<context:component-scan base-package="spring.controller"/>
+	<context:component-scan base-package="spring.service"/>
 	<!-- 
 		주의점 : 모든 클래스를 빈으로 읽는 것이 아니다!!
 				지정된 클래스들만 빈으로 읽어들인다.
