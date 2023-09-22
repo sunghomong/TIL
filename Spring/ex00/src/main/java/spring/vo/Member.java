@@ -2,8 +2,14 @@ package spring.vo;
 
 import java.util.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import spring.exception.IdPasswordNotMatchingException;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member { // DB 저장용
 	
 	private Long id;

@@ -30,5 +30,8 @@
 	<p>
 		<a href="<c:url value= '/survey'/>">[설문조사]</a>
 	</p>
+	<p>
+		<a href="<c:url value= '/member/list'/>">[회원조회]</a>
+	</p>
 </body>
 </html>

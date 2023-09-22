@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -29,7 +31,27 @@ public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받
 		this.jdbcTemplate = jdbcTemplate;
 	}
 	
+	// 매핑 규칭
+	private RowMapper<Member> mapper = new RowMapper<Member>() {
 
+		@Override
+		public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+			Member member = 
+					Member.builder()
+					.id(rs.getLong("id"))
+					.name(rs.getString("name"))
+					.email(rs.getString("email"))
+					.password(rs.getString("password"))
+					.registerDate(rs.getTimestamp("regdate"))
+					.build(); // lombok 기능 build 를 통해 생성
+			member.setId(rs.getLong("id"));
+
+			return member;
+		}
+	};
+	
+	
+	
 	public List<Member> selectAll() {
 
 		// jdbcTemplate을 사용하는데 중요한 요소
@@ -61,14 +83,17 @@ public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받
 //		});
 
 		// 3. 람다식을 매개값으로 넣어줌
-		List<Member> list = jdbcTemplate.query(sql, (rs, rowNum) -> {
-			Member member = new Member(rs.getString("email"), rs.getString("password"), rs.getString("name"),
-					rs.getTimestamp("regdate"));
-			member.setId(rs.getLong("id"));
-
-			return member;
-		});
-
+//		List<Member> list = jdbcTemplate.query(sql, (rs, rowNum) -> {
+//			Member member = new Member(rs.getString("email"), rs.getString("password"), rs.getString("name"),
+//					rs.getTimestamp("regdate"));
+//			member.setId(rs.getLong("id"));
+//
+//			return member;
+//		});
+		
+		// 4. 매핑 규칙
+		List<Member> list = jdbcTemplate.query(sql,mapper);
+		
 		return list;
 	}
 
@@ -84,19 +109,21 @@ public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받
 		// return list.get(0);
 		String sql = "SELECT * FROM members WHERE email=?";
 
-		List<Member> list = jdbcTemplate.query(sql, new RowMapper<Member>() {
-
-			@Override
-			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Member member = new Member(rs.getString("email"), rs.getString("password"), rs.getString("name"),
-						rs.getTimestamp("regdate"));
-				member.setId(rs.getLong("id"));
-
-				return member;
-			}
-		}, email);
+//		List<Member> list = jdbcTemplate.query(sql, new RowMapper<Member>() {
+//
+//			@Override
+//			public Member mapRow(ResultSet rs, int rowNum) throws SQLException {
+//				Member member = new Member(rs.getString("email"), rs.getString("password"), rs.getString("name"),
+//						rs.getTimestamp("regdate"));
+//				member.setId(rs.getLong("id"));
+//
+//				return member;
+//			}
+//		}, email);
 
 //		return list.get(0);
+		
+		List<Member> list = jdbcTemplate.query(sql,mapper,email);
 
 		return list.isEmpty() ? null : list.get(0);
 
@@ -176,5 +203,43 @@ public class MemberDao { // DB 연결해서 쿼리를 보내고 데이터를 받
 //
 //		return null;
 //	}
+	
+	// 가입일 기준으로 회원 검색하는 메서드
+	public List<Member> selectByRegdate(Date from, Date to) {
+		
+		String sql = "SELECT * FROM members WHERE regdate BETWEEN ? AND ? ORDER BY regdate ASC";
+		
+		List<Member> result = jdbcTemplate.query(sql, mapper,from,to);
+		
+		return result;
+	}
+	
+	// 아이디로 회원 상세 보기 메서드
+	public Member selectById(Long id) {
+		String sql = "SELECT * FROM members WHERE id=?";
+		
+		List<Member> list = jdbcTemplate.query(sql, mapper,id);
+		
+		Optional<Member> member;  // JPA
+		// Wrapper 클래스 <= 기본타입
+		
+		return list.isEmpty()?null:list.get(0);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
