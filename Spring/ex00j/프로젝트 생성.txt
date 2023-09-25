@@ -1,0 +1,17 @@
+- ex 00j 스프링 레거시 프로젝트 생성
+- ex 00의 pom.xml 내용을 복사해서 ex00j의 pom.xml에 붙여넣고 메이븐 업데이트
+- ex 00의 src/main/java에 있는 모든 패키지를 복사해서 ex00j에 붙여넣기
+- ex 00의 src/main/resources에 있는 message 폴더를 복사해서 ex00j에 붙여넣기
+- ex 00의 web.xml의 내용을 복사해서 ex00j의 web.xml에 붙여넣기
+- ex 00의 views 폴더를 복사해서 ex00j에 붙여넣기
+
+- ex00j에 src/main/java에 새로운 패키지를 만들어봅시다.
+	spring.config
+- 해당 패키지에 자바 클래스를 3개를 만들어 봅시다.
+	spring-mvc.xml => MvcConfig.java
+	spring-controller.xml => ControllerConfig.java
+	spirng-member.xml => MemberConfig.java
+
+----------------------------------------------------------------------------------
+1) web.xml
+2) 각 설정파일 XXXConfig.java
