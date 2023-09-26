@@ -18,7 +18,8 @@
 		transaction-manager="transactionManager" />
 
 	<!-- DB 연결을 위해서 연결 객체를 준비 => 커넥션 풀(DataSource) -->
-	<bean id="dataSource"
+
+<!-- 	<bean id="dataSource"
 		class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
@@ -26,7 +27,9 @@
 			value="jdbc:oracle:thin:@localhost:1521:XE" />
 		<property name="user" value="HR" />
 		<property name="password" value="1234" />
-	</bean>
+	</bean> -->
+
+
 
 	<!-- jdbcTemplate 빈 -->
 	<bean id="jdbcTemplate"
