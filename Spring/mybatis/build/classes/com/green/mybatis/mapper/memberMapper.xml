@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+	Mapper설정 파일
+	 => 쿼리문, 매핑 규칙
+
+ --> 
+<mapper namespace="com.green.mybatis.mapper.member">
+ 	
+ 	<!-- 
+ 		DML : INSERT, UPDATE, DELETE, SELECT 
+ 		=> DML에 맞는 각 태그가 존재
+ 		
+ 		id : 쿼리를 찾기위한 고유값
+ 		resultType : 쿼리 실행 결과를 담을 객체, 별칭, 기본타입
+ 		resultMap : 외부 참조명
+ 		
+ 	 -->
+ 	 
+ 	 <!--  매핑 규칙 : resultMap -->
+ 	 <resultMap type="memberVo" id="memVo">
+ 	 	<result column="id" property="id"/>
+	 	 <result column="email" property="email"/>
+	 	 <result column="name" property="name"/>
+	 	 <result column="password" property="password"/>
+	 	 <result column="regdate" property="regdate"/>
+ 	 </resultMap>
+ 	 
+ 	 <resultMap type="java.util.HashMap" id="memberMap">
+ 	 	 <result column="id" property="id"/>
+	 	 <result column="email" property="email"/>
+	 	 <result column="name" property="name"/>
+	 	 <result column="password" property="password"/>
+	 	 <result column="regdate" property="regdate"/>
+ 	 </resultMap>
+ 	 
+ 	 	 
+<!-- <select id="selectAll" resultType="com.green.vo.MemberVO">  패키지.객체-->
+<!-- 	<select id="selectAll" resultType="memberVo">     별칭 -->
+	<select id="selectAll" resultMap="memVo"> 	<!-- 외부 참조값 -->
+ 	<!-- select에서  resultMap으로 반환하는 경우에는 List로 반환 -->
+ 		SELECT * 
+ 			FROM members
+ 	</select>
+
+<!--  결과를 객체가 아닌 맵으로도 데이터를 꺼내 올수 있다. -->
+	<select id="selectAllToMap" resultMap="memberMap">
+		 SELECT * 
+ 			FROM members
+	</select>
+<!-- 기본 타입 데이터 반환 int -->
+	<select id="selectCnt" resultType="int">
+		SELECT COUNT(*)
+		FROM members
+	</select>
+ 
+<!-- 쿼리 완성을 위한 매개값 설정  -->
+	<select id="selectByEmail" resultType="memberVo" parameterType="String">
+		SELECT *									<!-- 객체, 기본타입 -->
+		FROM members
+		WHERE email=#{email}
+	</select>
+
+<!-- 데이터 삽입 : insert -->
+	<insert id="insertMember" parameterType="memberVo">
+		INSERT INTO members
+		VALUES(members_seq.nextval,#{email},#{password},#{name},sysdate)
+	</insert>
+<!-- 데이터 수정 : update -->
+	<update id="updateMember" parameterType="memberVo">
+		UPDATE members
+		SET name=#{name}, password=#{password}
+		WHERE email=#{email}
+	</update>
+<!-- 데이터 삭제 : delete -->
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM members
+		WHERE email=#{email}
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
