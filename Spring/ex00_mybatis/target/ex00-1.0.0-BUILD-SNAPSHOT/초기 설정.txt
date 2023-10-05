@@ -1,0 +1,37 @@
+POM
+  - java version, spring version
+  - servlet, jsp 라이브러리 버전 업데이트
+  - ojdbc8, c3p0, spring-jdbc 라이브러리 등록
+  - 메이븐 컴파일러 버전 수정 (3.11.0), JRE버전 1.8 수정
+
+=> 메이븐 업데이트 => 설정을 프로젝트에 반영
+-------------------------------------------------------------
+기존 소스(7강)를 복사
+   - spring.exception  (3개 파일)
+   - spring.vo (2개 파일)
+   - spring.dao (1개 파일)
+   - spring.service (2개 파일)
+   - spring.controller 
+       : RegisterController 생성
+--------------------------------------------------------------
+스프링 설정파일(root-Context.xml, servlet-context.xml 등)
+  - spring-member.xml
+       : 데이터베이스 연결(커넥션풀), DAO, service객체
+       : 트렌젝션, jdbcTemplate
+  - spring-mvc.xml
+       : 웹 MVC 준비
+          - mvc:annotation driven,
+          - mvc:default-servlet-handler
+          - mvc:view-resolvers
+  - spring-controller.xml
+
+---------------------------------------------------------------------------
+스프링 설정파일을 web.xml에 등록
+   - ex08에서 복사  : filter 적용, servlet 적용
+
+
+
+
+
+
+

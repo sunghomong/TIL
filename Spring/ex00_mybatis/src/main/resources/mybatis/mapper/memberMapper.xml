@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="spring.mybatis.mapper">
+<!-- 저장하기 위한 객체의 필드와 DB의 속성이 다른 경우에 옮겨담기 위해서 resultMap -->
+	<resultMap type="member" id="memVo">
+		<result column="id" property="id"/>
+		<result column="email" property="email"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="regdate" property="registerDate"/>
+	</resultMap>	
+
+<!-- 반복적으로 나오는 쿼리를 묶어서 처리 -->
+	<sql id="selectAllMember">
+		SELECT * FROM members
+	</sql>
+
+<!-- SELECT * FROM members ORDER BY id ASC -->
+	<select id="selectAll" resultMap="memVo">
+		<include refid="selectAllMember" />
+		ORDER BY id ASC
+	</select>
+	
+<!-- SELECT * FROM members WHERE email=? -->
+	<select id="selectByEmail" resultMap="memVo" parameterType="String">
+		<include refid="selectAllMember" />
+		WHERE email=#{email}
+	</select>
+	
+<!-- SELECT * FROM members WHERE id=? -->
+	<select id="selectById" resultMap="memVo" parameterType="Long">
+		<include refid="selectAllMember" />
+		WHERE id=#{id}
+	</select>
+	
+<!-- SELECT * FROM members WHERE regdate BETWEEN ? AND ? ORDER BY regdate ASC -->  
+	<select id="selectByRegdate" resultMap="memVo" parameterType="spring.vo.ListCommand">
+		<include refid="selectAllMember" />
+		WHERE regdate 
+		BETWEEN #{from} AND #{to} 
+		ORDER BY regdate ASC
+	</select>
+	
+<!-- SELECT COUNT(*) FROM members -->
+	<select id="count" resultType="int">
+		SELECT COUNT(*) 
+		FROM members
+	</select>
+	
+<!-- UPDATE members SET name=?, password=? WHERE email=? -->
+	<update id="updateMember" parameterType="member">
+		UPDATE members 
+		SET name=#{name}, password=#{password} 
+		WHERE email=#{email}
+	</update>
+	
+<!-- INSERT INTO members VALUES(members_seq.nextval,?,?,?,?) -->
+	<insert id="insertMember" parameterType="member">
+		INSERT INTO members 
+		VALUES(members_seq.nextval,#{email},#{password},#{name},sysdate)
+	</insert>
+
+
+
+</mapper>
+
+
+
+
+
+
