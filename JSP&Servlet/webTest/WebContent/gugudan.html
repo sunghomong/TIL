@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+	body{
+		background-color: #333;
+		color: #fff;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	div{
+		border: 1px solid #000;
+		width: 600px;
+		text-align: center;
+		padding: 60px;
+		margin: auto;
+		margin-top: 60px;
+		box-shadow: 2px 4px 4px 6px #222;
+		background-color: #666;
+		border-radius: 10px;
+	}
+	hr{
+		width: 100%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+
+	button{
+		cursor: pointer;
+		margin-left: 30px;
+		width: 70px;
+		height: 25px;
+	}
+	button:hover{
+		color: #fff;
+		background-color: #333;
+	}
+</style>
+<body>
+	<div>
+		<h1>구구단 게임</h1>
+		
+		<form action="gugudan" method = "get">
+			<input name = "dan" type ="radio" value = "2">2 단
+			<input name = "dan" type ="radio" value = "3">3 단
+			<input name = "dan" type ="radio" value = "4">4 단
+			<input name = "dan" type ="radio" value = "5">5 단
+			<input name = "dan" type ="radio" value = "6">6 단
+			<input name = "dan" type ="radio" value = "7">7 단
+			<input name = "dan" type ="radio" value = "8">8 단
+			<input name = "dan" type ="radio" value = "9">9 단
+			<button type = "submit" >제출</button>
+		</form>
+
+		<hr>
+
+		<form action="gugudan" method = "post">
+			<input name = "dan" type ="radio" value = "2">2 단
+			<input name = "dan" type ="radio" value = "3">3 단
+			<input name = "dan" type ="radio" value = "4">4 단
+			<input name = "dan" type ="radio" value = "5">5 단
+			<input name = "dan" type ="radio" value = "6">6 단
+			<input name = "dan" type ="radio" value = "7">7 단
+			<input name = "dan" type ="radio" value = "8">8 단
+			<input name = "dan" type ="radio" value = "9">9 단
+			<button type = "submit" >제출</button>
+		</form>
+	</div>
+</body>
+</html>

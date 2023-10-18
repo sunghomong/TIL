@@ -1,0 +1,71 @@
+1
+이름 
+파이썬 데이터 사이언스 핸드북
+price
+34200
+pictureUrl
+01_python.jpg
+Description
+파이썬을 활용한 데이터 과학 입문서
+
+2
+이름 
+코틀린을 활용한 안드로이드 프로그래밍 
+price
+34000
+pictureUrl
+02_android.jpg
+Description
+코틀린 언어를 통한 안드로이드 개발서
+
+3
+이름 
+Node.js 교과서
+price
+32400
+pictureUrl
+03_nodejs.jpg
+Description
+기본기에 충실한 노드.js 학습서
+
+4
+이름 
+자바 웹을 다루는 기술
+price
+40500
+pictureUrl
+04_javaWebBook.jpg
+Description
+JSP,서블릿,스프링까지 실무에 알아야 할 기술서
+
+5
+이름 
+토비의 스프링 3.1
+price
+67500
+pictureUrl
+05_spring.jpg
+Description
+스프링의 원리와 이해를 충실히 가르쳐줄 교과서
+
+
+6
+이름 
+Do it! 리액트 프로그래밍 정석 
+price
+32400
+pictureUrl
+06_reAct.jpg
+Description
+리액트 입문
+
+
+7 
+이름 
+실전 리액트 프로그래밍
+price
+28800
+pictureUrl
+07_reAct.jpg
+Description
+리액트 실무 지침서

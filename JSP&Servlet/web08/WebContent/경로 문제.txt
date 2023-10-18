@@ -1,0 +1,26 @@
+ --- 프로젝트 이름에서 우클릭후 실행한 경우
+ http://localhost:8085/web08/index.jsp
+
+외부 파일 경로
+      ./script/member.js
+현재 내 위치가 어딘가?
+http://localhost:8085/web08/login
+
+http://localhost:8085/web08/   => ./
+http://localhost:8085/web08/script/member.js
+-----------------------------------------------------------
+http://localhost:8085/web08/index.html
+	 프로젝트/WebContent/index.html
+ 
+=============================================================================
+ --- 실행하고자 하는 JSP 파일에서 우클릭후 실행한 경우
+ http://localhost:8085/web08/member/login.jsp   => X
+
+http://localhost:8085/web08/member/  =>  ./
+http://localhost:8085/web08/member/script/member.js
+
+파일에서 실행하는 것이 아닌
+프로젝트에서 실행하셔야 경로 문제가 발생하지 않는다!!!!!!
+
+
+
