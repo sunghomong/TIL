@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	body{
+		background-color: #333;
+		color: #fff;
+		margin: 0px;
+		padding: 0px;
+	}
+
+	.box{
+		border: 1px solid #000;
+		width: 50%;
+		text-align: center;
+		padding: 50px;
+		margin: auto;
+		margin-top: 60px;
+		box-shadow: 2px 4px 4px 6px #222;
+		background-color: #666;
+		border-radius: 10px;
+		padding-bottom: 50px;
+		
+	}
+	button{
+		cursor: pointer;
+		margin-top: 40px;
+		width: 120px;
+		height: 30px;
+		
+	}
+	button:hover{
+		color: #fff;
+		background-color: #333;
+	}
+	input{
+		margin-top: 10px;
+		width: 200px;
+		height: 20px;
+	}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h1>코로나 검사</h1>
+		<form action="check_cr" method = "get" >
+			<div>
+				이름 : <input type = "text" name = "check_name">
+			</div>
+			<div>
+			체온 : <input type = "text" name = "check_temp">
+		</div>
+			<button type = "submit">전송</button>
+		</form>
+	</div>
+</body>
+</html>

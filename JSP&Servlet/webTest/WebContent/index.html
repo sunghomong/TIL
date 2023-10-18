@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+
+	body {
+	text-align: center;
+	background-color: #333;
+	color: #fff;
+	}
+	div{
+		width: 300px;
+		text-align: center;
+		margin: auto;
+		margin-top: 200px;
+		border: 1px solid black;
+		border-radius: 5px;
+		height: 400px;
+		padding-top: 40px;
+		box-sizing: border-box;
+		background-color: #666;
+		box-shadow: 2px 2px 4px black;
+	}
+	
+	h1 {
+		font-size: 30px;
+	}
+
+	input {
+		width: 60%;
+		height: 20px;
+		text-align: left;
+		margin-top: 10px;
+	}
+
+	button{
+		margin-top: 20px;
+		width: 100px;
+		height: 40px;
+		cursor: pointer;
+	}
+	button:hover{
+		background-color: #888;
+	}
+
+	a{
+		text-decoration: none;
+		color: #fff;
+		display: block;
+		margin-top: 10px;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<h1>점수 입력칸</h1>
+		<form action="scores" method = "get">
+		국어 : <input type = "text" name = "Ksco" id =""><br>
+		영어 : <input type = "text" name = "Esco" id =""><br>
+		수학 : <input type = "text" name = "Msco" id =""><br>
+		<button type = "submit">전송</button>
+		</form>
+		<a href = "gugudan.html">구구단 하러 가기</a>
+		<a href = "checkPerson.html">코로나 검사하러 가기</a>
+		<a href = "Login.html">로그인 하러 가기</a>
+	</div>
+</body>
+</html>
