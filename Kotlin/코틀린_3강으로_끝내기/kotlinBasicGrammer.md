@@ -10,7 +10,7 @@
 
 ### 프로젝트 생성
 
-![img.png](Kotlin/코틀린_3강으로_끝내기/img/img.png)
+![img.png](img/img.png)
 
 - empty 파일 생성
 
